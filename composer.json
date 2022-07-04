@@ -1,0 +1,18 @@
+{
+    "name": "edeno/php-clean-contact-list",
+    "description": "Crud simples para lista de contatos com clean architecture",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Edeno Scherer",
+            "email": "edenoscherer@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Edeno\\PhpCleanContactList\\": "src/"
+        }
+    },
+    "require": {},
+    "require-dev": {}
+}
