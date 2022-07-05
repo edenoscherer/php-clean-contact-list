@@ -6,6 +6,9 @@ namespace Edeno\TestPhpCleanContactList\Contacts\Domain\Repositories;
 
 use Edeno\PhpCleanContactList\Contacts\Domain\Entities\ContactEntity;
 
+/**
+ * @author Edeno Luiz Scherer <edenoshcerer@gmail.com>
+ */
 interface ContactRepositoryInterface
 {
 
