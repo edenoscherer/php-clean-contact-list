@@ -12,16 +12,21 @@ use JsonSerializable;
  */
 final class PersonEntity implements JsonSerializable
 {
-    private ?int $id;
+    private ?int $id = null;
     private string $name;
     /** @var ContactEntity[] */
-    private array $contacts;
+    private array $contacts = [];
 
     public function __construct(
         stdClass $params
     ) {
-        $this->setId($params->id);
+        if (isset($params->id)) {
+            $this->setId($params->id);
+        }
         $this->setName($params->name);
+        if (!empty($params->contacts)) {
+            $this->setContacts($params->contacts);
+        }
     }
 
     /**
@@ -86,11 +91,11 @@ final class PersonEntity implements JsonSerializable
         foreach ($contacts as $contact) {
             if ($contact instanceof ContactEntity) {
                 $values[] = $contact;
-                continue;
+            } elseif ($contact instanceof stdClass) {
+                $values[] = new ContactEntity($contact);
             }
-            $values[] = new ContactEntity($contact);
         }
-        $this->contacts = $contacts;
+        $this->contacts = $values;
 
         return $this;
     }

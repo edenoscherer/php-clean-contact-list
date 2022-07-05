@@ -12,8 +12,8 @@ use stdClass;
  */
 final class ContactEntity implements JsonSerializable
 {
-    private ?int $id;
-    private ?int $idPerson;
+    private ?int $id = null;
+    private ?int $idPerson = null;
     private string $type;
     private string $value;
 
@@ -21,8 +21,12 @@ final class ContactEntity implements JsonSerializable
         stdClass $params
     ) {
         if ($params) {
-            $this->setId($params->id);
-            $this->setIdPerson($params->idPerson);
+            if (isset($params->id)) {
+                $this->setId($params->id);
+            }
+            if (isset($params->idPerson)) {
+                $this->setIdPerson($params->idPerson);
+            }
             $this->setType($params->type);
             $this->setValue($params->value);
         }
