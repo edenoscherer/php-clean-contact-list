@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Edeno\TestPhpCleanContactList\Contacts\Domain\Repositories;
+namespace Edeno\PhpCleanContactList\Contacts\Domain\Repositories;
 
 use Edeno\PhpCleanContactList\Contacts\Domain\Entities\ContactEntity;
 
