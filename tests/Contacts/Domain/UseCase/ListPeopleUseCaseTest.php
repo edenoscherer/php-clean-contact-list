@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+namespace Edeno\TestPhpCleanContactList\Contacts\Domain\UseCase;
+
 use Edeno\TestPhpCleanContactList\BaseTestCase;
 use Edeno\PhpCleanContactList\Contacts\Domain\UseCase\AddPerson\Input;
 use Edeno\PhpCleanContactList\Contacts\Domain\UseCase\AddPerson\InputContact;
