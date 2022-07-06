@@ -28,7 +28,6 @@ final class UpdatePersonUseCaseTest extends BaseTestCase
         $input = new AddPersonInput('Edeno Luiz Scherer', [$contactInput]);
         $res = (new AddPersonUseCase($this->repository))->handle($input);
         $this->idPerson = $res->getId();
-        var_dump($res->getId());
     }
 
     public function testHandle()
