@@ -1,3 +1,10 @@
+### Composer ###
 /vendor/
+
+### PHPUNIT ###
 /tests/build
 .phpunit.result.cache
+
+### Config ###
+.env*
+!.env.example

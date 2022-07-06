@@ -1,5 +1,7 @@
 <?php
 
+use Dotenv\Dotenv;
+
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
@@ -20,3 +22,6 @@ function error_handler($errno, $errstr, $errfile, $errline)
 }
 
 set_error_handler('error_handler');
+
+$dotenv = Dotenv::createImmutable(dirname(__DIR__), '.env.test');
+$dotenv->load();
