@@ -8,3 +8,7 @@
 ### Config ###
 .env*
 !.env.example
+
+### Logs ###
+/logs/*
+!/logs/index.php

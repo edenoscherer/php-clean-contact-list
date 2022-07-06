@@ -1,0 +1,32 @@
+version: '3.7'
+services:
+    postgres:
+        image: postgres:13.3-alpine
+        container_name: php-clean-postgres
+        restart: always
+        working_dir: /application
+        volumes:
+            - ./db:/var/lib/postgresql/data
+        env_file:
+            - .env
+        environment:
+            - POSTGRES_USER=${DB_USERNAME}
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
+            - POSTGRES_DB=${DB_DATABASE}
+        ports:
+            - '${DB_PORT}:${DB_PORT}'
+        command: -p ${DB_PORT}
+    webapp:
+        build:
+            context: .
+            dockerfile: ./docker/Dockerfile
+        container_name: php-clean-app
+        restart: always
+        ports:
+            - '8080:80'
+        volumes:
+            - .:/var/www/html
+        env_file:
+            - .env
+        depends_on:
+            - postgres
