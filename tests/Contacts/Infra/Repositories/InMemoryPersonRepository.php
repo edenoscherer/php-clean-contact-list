@@ -49,6 +49,10 @@ final class InMemoryPersonRepository implements PersonRepositoryInterface
     public function add(PersonEntity &$person): PersonEntity
     {
         $person->setId(rand(10, 1000));
+        foreach ($person->getContacts() as &$contact) {
+            $contact->setId(rand(10, 1000));
+            $contact->setIdPerson($person->getId());
+        }
         $this->people[] = $person;
         return $person;
     }
@@ -61,6 +65,10 @@ final class InMemoryPersonRepository implements PersonRepositoryInterface
     {
         foreach ($this->people as $key => $row) {
             if ($row->getId() == $person->getId()) {
+                foreach ($person->getContacts() as &$contact) {
+                    $contact->setId(rand(10, 1000));
+                    $contact->setIdPerson($person->getId());
+                }
                 $this->people[$key] = $person;
                 return $person;
             }
