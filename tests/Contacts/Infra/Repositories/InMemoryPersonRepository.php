@@ -40,6 +40,7 @@ final class InMemoryPersonRepository implements PersonRepositoryInterface
                 return $person;
             }
         }
+        return null;
     }
 
     /**

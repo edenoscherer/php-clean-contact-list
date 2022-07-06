@@ -40,6 +40,7 @@ final class InMemoryContactRepository implements ContactRepositoryInterface
                 return $contact;
             }
         }
+        return null;
     }
 
     /**
