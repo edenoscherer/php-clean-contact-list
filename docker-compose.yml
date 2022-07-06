@@ -6,7 +6,8 @@ services:
         restart: always
         working_dir: /application
         volumes:
-            - ./db:/var/lib/postgresql/data
+            - ./docker/dumps.sql:/docker-entrypoint-initdb.d/dumps.sql
+            - postgres:/var/lib/postgresql/data
         env_file:
             - .env
         environment:
@@ -30,3 +31,7 @@ services:
             - .env
         depends_on:
             - postgres
+volumes:
+    postgres:
+        driver: local
+        name: php-clean-postgres-data

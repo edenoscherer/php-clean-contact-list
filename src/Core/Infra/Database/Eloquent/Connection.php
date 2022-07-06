@@ -21,12 +21,12 @@ final class Connection
     {
         // Database configuration
         $settings = array(
-            'driver'    => getenv('DB_CONNECTION'),
-            'host'      => getenv('DB_HOST'),
-            'username'  => getenv('DB_USERNAME'),
-            'password'  => getenv('DB_PASSWORD'),
-            'database'  => getenv('DB_DATABASE'),
-            'port'      => getenv('DB_PORT'),
+            'driver'    => $_ENV['DB_CONNECTION'],
+            'host'      => $_ENV['DB_HOST'],
+            'username'  => $_ENV['DB_USERNAME'],
+            'password'  => $_ENV['DB_PASSWORD'],
+            'database'  => $_ENV['DB_DATABASE'],
+            'port'      => $_ENV['DB_PORT'],
             'charset'   => 'utf8',
             'collation' => 'utf8_general_ci',
             'prefix'    => ''
@@ -76,5 +76,13 @@ final class Connection
             return $this->capsule->getConnection($connectionName);
         }
         return $this->capsule->getConnection();
+    }
+
+    /**
+     * @return \Illuminate\Database\Capsule\Manager
+     */
+    public function getCapsule(): Capsule
+    {
+        return $this->capsule;
     }
 }
