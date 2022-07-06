@@ -36,6 +36,7 @@ final class UpdatePersonUseCase
     protected function makePerson(Input $input): PersonEntity
     {
         $params = new stdClass();
+        $params->id = $input->getId();
         $params->name = $input->getName();
         $params->contacts = $this->makeContactList($input->getContacts());
 
