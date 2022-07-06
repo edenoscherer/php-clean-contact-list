@@ -27,7 +27,6 @@ final class AddPersonUseCase
     public function handle(Input $input): Output
     {
         $person = $this->makePerson($input);
-
         $res = $this->repository->add($person);
 
         return new Output($res->getId(), $res->getName(), $this->makeOutputContactList($res->getContacts()));
@@ -36,7 +35,6 @@ final class AddPersonUseCase
 
     protected function makePerson(Input $input): PersonEntity
     {
-
         $params = new stdClass();
         $params->name = $input->getName();
         $params->contacts = $this->makeContactList($input->getContacts());
@@ -56,7 +54,7 @@ final class AddPersonUseCase
             $obj = new stdClass();
             $obj->type = $inputContact->getType();
             $obj->value = $inputContact->getValue();
-            $contacts[] = new ContactEntity($obj);
+            $list[] = new ContactEntity($obj);
         }
         return $list;
     }
