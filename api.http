@@ -1,0 +1,44 @@
+### Create Person
+POST http://localhost:8080/contacts
+Content-Type: application/json
+
+{
+    "name": "Edeno L. Scherer",
+    "contacts":[
+        {
+            "type":"email",
+            "value":"edeno_@hotmail.com"
+        },
+        {
+            "type":"cel",
+            "value":"45998213605"
+        }
+    ]
+}
+
+### List
+GET  http://localhost:8080/contacts
+Content-Type: application/json
+
+
+### Details
+GET  http://localhost:8080/contacts/1
+Content-Type: application/json
+
+### Update
+PUT  http://localhost:8080/contacts/1
+Content-Type: application/json
+
+{
+    "name": "Edeno L. Scherer",
+    "contacts":[
+        {
+            "type":"email",
+            "value":"edeno_@hotmail.com"
+        },
+        {
+            "type":"cel",
+            "value":"45998213605"
+        }
+    ]
+}

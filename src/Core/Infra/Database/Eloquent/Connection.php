@@ -50,6 +50,8 @@ final class Connection
         }
 
         Carbon::setLocale('pt_BR');
+
+        $this->capsule = $capsule;
     }
 
     /**
