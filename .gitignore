@@ -12,3 +12,6 @@
 ### Logs ###
 /logs/*
 !/logs/index.php
+
+### Temp
+/temp
