@@ -43,6 +43,7 @@ RUN mkdir -p /var/www/html/logs
 RUN chown -R www-data:www-data /var/www/html
 
 RUN a2enmod rewrite
+RUN a2enmod headers
 RUN service apache2 restart;
 
 # RUN /var/www/html/vendor/bin/phinx migrate
