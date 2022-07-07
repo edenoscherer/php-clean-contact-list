@@ -1,12 +1,12 @@
 <?php
 
-namespace Edeno\PhpCleanContactList\Contacts\Domain\UseCase\ListPeople;
+namespace Edeno\PhpCleanContactList\Contacts\Domain\UseCase\PersonDetails;
 
-use Edeno\PhpCleanContactList\Contacts\Domain\UseCase\ListPeople\Output;
-use Edeno\PhpCleanContactList\Contacts\Domain\UseCase\ListPeople\OutputContact;
+use Edeno\PhpCleanContactList\Contacts\Domain\UseCase\PersonDetails\Output;
+use Edeno\PhpCleanContactList\Contacts\Domain\UseCase\PersonDetails\OutputContact;
 use Edeno\PhpCleanContactList\Contacts\Domain\Repositories\PersonRepositoryInterface;
 
-final class ListPeopleUseCase
+final class PersonDetailsUseCase
 {
     protected PersonRepositoryInterface $repository;
 
@@ -15,18 +15,13 @@ final class ListPeopleUseCase
         $this->repository = $repository;
     }
 
-
     /**
-     * @return Output[]
+     * @return Output
      */
-    public function handle(): array
+    public function handle(int $id): Output
     {
-        $res = $this->repository->all();
-        $people = [];
-        foreach ($res as $person) {
-            $people[] = new Output($person->getId(), $person->getName(), $this->makeOutputContactList($person->getContacts()));
-        }
-        return $people;
+        $res = $this->repository->getById($id);
+        return new Output($res->getId(), $res->getName(), $this->makeOutputContactList($res->getContacts()));
     }
 
     /**

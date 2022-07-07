@@ -11,7 +11,6 @@ use Edeno\PhpCleanContactList\Contacts\Domain\Entities\ContactEntity;
  */
 interface ContactRepositoryInterface
 {
-
     /**
      * @return ContactEntity[]
      */

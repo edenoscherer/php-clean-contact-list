@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Edeno\PhpCleanContactList\Contacts\Domain\UseCase\AddPerson;
+namespace Edeno\PhpCleanContactList\Contacts\Domain\UseCase\PersonDetails;
 
 use JsonSerializable;
 
 /**
  * @author Edeno Luiz Scherer <edenoshcerer@gmail.com>
  */
+
 final class Output implements JsonSerializable
 {
     private int $id;
