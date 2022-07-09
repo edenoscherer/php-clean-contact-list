@@ -51,7 +51,6 @@ final class AddPersonController
                     )
                 )
             ];
-            $status = HttpStatusCode::HTTP_NOT_ACCEPTABLE;
         } catch (Throwable $th) {
             $output = [
                 'success' => false,

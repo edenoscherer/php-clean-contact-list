@@ -8,49 +8,31 @@ use Throwable;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Edeno\PhpCleanContactList\Core\Utils\HttpStatusCode;
-use Edeno\PhpCleanContactList\Contacts\Domain\UseCase\UpdatePerson\Input;
-use Edeno\PhpCleanContactList\Contacts\Domain\UseCase\UpdatePerson\InputContact;
 use Edeno\PhpCleanContactList\Core\Application\Presentation\JsonPresentation;
-use Edeno\PhpCleanContactList\Contacts\Domain\UseCase\UpdatePerson\UpdatePersonUseCase;
+use Edeno\PhpCleanContactList\Contacts\Domain\UseCase\DeletePerson\DeletePersonUseCase;
 
 /**
  * @author Edeno Luiz Scherer <edenoshcerer@gmail.com>
  */
-final class UpdatePersonController
+final class DeletePersonController
 {
-    protected UpdatePersonUseCase $updatePersonCase;
+    protected DeletePersonUseCase $DeletePersonCase;
     protected JsonPresentation $jsonPresentation;
 
-    public function __construct(UpdatePersonUseCase $updatePersonCase, JsonPresentation $jsonPresentation)
+    public function __construct(DeletePersonUseCase $DeletePersonCase, JsonPresentation $jsonPresentation)
     {
-        $this->updatePersonCase = $updatePersonCase;
+        $this->DeletePersonCase = $DeletePersonCase;
         $this->jsonPresentation = $jsonPresentation;
     }
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $data = (array)$request->getParsedBody();
-
         $status = HttpStatusCode::HTTP_ACCEPTED;
         try {
-            $contacts = [];
-            if (!empty($data['contacts'])) {
-                foreach ($data['contacts'] as $row) {
-                    $contacts[] = new InputContact(
-                        isset($row['type']) ? $row['type'] : '',
-                        isset($row['value']) ? $row['value'] : ''
-                    );
-                }
-            }
+
             $output = [
                 'success' => true,
-                'data' => $this->updatePersonCase->handle(
-                    new Input(
-                        intval($args['id']),
-                        isset($data['name']) ? $data['name'] : '',
-                        $contacts
-                    )
-                )
+                'data' => $this->DeletePersonCase->handle(intval($args['id']))
             ];
         } catch (Throwable $th) {
             $output = [

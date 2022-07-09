@@ -11,6 +11,7 @@ use Slim\Routing\RouteCollectorProxy;
 use Slim\Exception\HttpNotFoundException;
 use Edeno\PhpCleanContactList\Contacts\Application\Controllers\AddPersonController;
 use Edeno\PhpCleanContactList\Contacts\Application\Controllers\ListPeopleController;
+use Edeno\PhpCleanContactList\Contacts\Application\Controllers\DeletePersonController;
 use Edeno\PhpCleanContactList\Contacts\Application\Controllers\UpdatePersonController;
 use Edeno\PhpCleanContactList\Contacts\Application\Controllers\PersonDetailsController;
 
@@ -32,6 +33,7 @@ final class Routes
             $group->get('', ListPeopleController::class);
             $group->get('/{id:[0-9]+}', PersonDetailsController::class);
             $group->put('/{id:[0-9]+}', UpdatePersonController::class);
+            $group->delete('/{id:[0-9]+}', DeletePersonController::class);
         });
 
         /**
